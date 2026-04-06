@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Discovery App</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">
+    <h1>Movie Discovery App</h1>
+    </a>
+    <a href="baitap34.html">Bài Tập 34</a>
+    <button id="toggle-dark">Bật Dark Mode</button>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Filters</h2>
+      <hr>
+      <input type="text" id="search" placeholder="Tìm kiếm phim...">
+      <div id="genre-filters"></div>
+    </aside>
+
+    <main class="movie-grid" id="movie-grid">
+      <!-- Thẻ phim sẽ được JS thêm vào -->
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

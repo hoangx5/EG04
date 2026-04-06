@@ -1,0 +1,234 @@
+/* =================== Variables =================== */
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #222;
+    --card-bg: #fff;
+    --card-shadow: rgba(0,0,0,0.1);
+    --primary-color: #6200ee;
+  }
+  
+  body.dark-mode {
+    --bg-color: #1c1c1c;
+    --text-color: #eee;
+    --card-bg: #333;
+    --card-shadow: rgba(255,255,255,0.1);
+    --primary-color: #bb86fc;
+  }
+  
+  /* =================== Global =================== */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* =================== Header =================== */
+  header {
+    padding: 1rem;
+    background-color: var(--card-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--card-shadow);
+  }
+  
+  #toggle-dark {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+  
+  /* =================== Container =================== */
+  .container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  
+  /* =================== Sidebar =================== */
+  .sidebar {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--card-shadow);
+  }
+  
+  .sidebar input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  /* =================== Movie Grid & Card =================== */
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .movie-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--card-shadow);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 200px;
+    margin: 1rem auto;
+  }
+  
+    .movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px var(--card-shadow);
+  }
+  
+    .poster-card {
+        width: 100%;           /* fit theo card */
+        height: 70%;
+        object-fit: cover;           /* fit theo card */
+        object-fit: fill;     /* giữ tỉ lệ, crop nếu cần */
+    }
+
+    .movie-poster {
+        width: 300px ;
+        height: 450px ;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+  .movie-poster:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-card .info {
+    padding: 0.5rem;
+  }
+  
+  .movie-row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin: 2rem 0;
+  }
+  
+  .movie-poster-col {
+    flex: 1;
+  }
+  
+  .movie-info-col {
+    flex: 2;
+  }
+  
+  /* =================== Modal =================== */
+  .modal {
+    display: none;
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+  }
+  
+  .modal-content {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  #modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  /* =================== Search Input =================== */
+  #search {
+    margin: 5px 0;
+    padding: 0.5rem;
+    width: 95%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  /* =================== Responsive =================== */
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .container {
+      grid-template-columns: 200px 1fr;
+    }
+  
+    .movie-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  
+    header h1 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+  
+    .sidebar {
+      order: -1;
+      margin-bottom: 1rem;
+    }
+  
+    .movie-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.5rem;
+    }
+  
+    .movie-card {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+  
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  
+    #toggle-dark {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.5rem;
+    }
+  
+    #search {
+      margin-bottom: 0.5rem;
+    }
+  }
